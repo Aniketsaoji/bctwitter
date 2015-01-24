@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'tweets#new'
 
+  resources :tweets
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -33,7 +35,7 @@ Rails.application.routes.draw do
   #     resource :seller
   #   end
 
-  # Example resource route with more complex sub-resources:
+  # Example resource route withinth more complex sub-resources:
   #   resources :products do
   #     resources :comments
   #     resources :sales do
