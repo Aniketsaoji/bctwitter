@@ -1,6 +1,14 @@
-<body style="background:url(/assets/Notahotsingle.jpg)">
+<body style="background:url(/assets/Kevin.jpg)">
 <%= simple_form_for @tweet do |f| %>
   <%= f.input :content %>
   <%= f.button :submit %>
 <% end %>
-</body
+</body>
+
+<ul>
+<% @tweets.each do |tweet| %>
+<li>
+<%= tweet.content %>
+</li>
+<% end %>
+</ul>
