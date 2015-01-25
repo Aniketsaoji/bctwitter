@@ -1,13 +1,20 @@
 <body style="background:url(/assets/Single.jpg)">
 <ul>
-<% @tweets.each do |tweet| %>
-<li>
-	<%= tweet.user.profile.profile_name %> |
-	<%= tweet.content %> |
-	<%= simple_form_for @relationship do |f| %>
-	<%= f.input :followed_id, as: :hidden, input_html: {value: tweet.user.id } %>
-	<%= f.button :submit, class: 'btn btn-primary', value: 'Follow' %>
-			<% end %>
-</li>
-<% end %>
+  <% @tweets.each do |tweet| %>
+  	<li>
+  		User:
+  		<%= tweet.user.profile.profile_name%>| 
+  		<%= tweet.content %> | <%= tweet.created_at %>
+  		<% if current_user.following?(tweet.user) %>
+  		<button type = "button" class = "btn btn-danger">
+  			Following
+  		</button>
+  		<%else%>
+  			<%= simple_form_for @relationship do |f|%>
+  				<%= f.input :followed_id, as: :hidden, input_html: {value: tweet.user.id} %>
+  				<%= f.button :submit, class: 'btn btn-primary', value: 'Follow' %>
+  			<%end%>
+  		<%end%>
+  	</li>
+	<% end %>
 </ul>
