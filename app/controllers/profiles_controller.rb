@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
 		@profile.user = current_user
 	
 		if @profile.save
-			flash[:success] = "Profile Crated"
+			flash[:success] = "Profile Created"
 			redirect_to profile_path(@profile.profile_name)
 		else
 			flash.now[:error] = "Please try again"

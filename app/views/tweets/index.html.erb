@@ -2,7 +2,12 @@
 <ul>
 <% @tweets.each do |tweet| %>
 <li>
-<%= tweet.content %>
+	<%= tweet.user.profile.profile_name %> |
+	<%= tweet.content %> |
+	<%= simple_form_for @relationship do |f| %>
+	<%= f.input :followed_id, as: :hidden, input_html: {value: tweet.user.id } %>
+	<%= f.button :submit, class: 'btn btn-primary', value: 'Follow' %>
+			<% end %>
 </li>
 <% end %>
 </ul>
